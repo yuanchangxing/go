@@ -50,6 +50,7 @@ set GOENV=off
 set GOBUILDFAIL=0
 set GOFLAGS=
 set GO111MODULE=
+set GOROOT_BOOTSTRAP=C:\go
 
 if exist make.bat goto ok
 echo Must run make.bat from Go src directory.
@@ -124,6 +125,7 @@ copy cmd\dist\dist.exe "%GOTOOLDIR%\"
 goto end
 
 :bootstrapfail
+echo make.bat here
 echo ERROR: Cannot find %GOROOT_BOOTSTRAP%\bin\go.exe
 echo Set GOROOT_BOOTSTRAP to a working Go tree ^>= Go 1.4.
 

@@ -314,6 +314,9 @@ var (
 )
 
 func (t *tester) registerStdTest(pkg string) {
+	if !testOpen {
+		return
+	}
 	testName := "go_test:" + pkg
 	if t.runRx == nil || t.runRx.MatchString(testName) == t.runRxWant {
 		stdMatches = append(stdMatches, pkg)
@@ -404,8 +407,11 @@ func (t *tester) registerRaceBenchTest(pkg string) {
 // stdOutErrAreTerminals is defined in test_linux.go, to report
 // whether stdout & stderr are terminals.
 var stdOutErrAreTerminals func() bool
-
+var testOpen = false              //xing ..
 func (t *tester) registerTests() {
+	if !testOpen {
+		return
+	}
 	// Fast path to avoid the ~1 second of `go list std cmd` when
 	// the caller lists specific tests to run. (as the continuous
 	// build coordinator does).
