@@ -50,7 +50,7 @@ set GOENV=off
 set GOBUILDFAIL=0
 set GOFLAGS=
 set GO111MODULE=
-set GOROOT_BOOTSTRAP=C:\go
+set GOROOT_BOOTSTRAP=D:\code\golang\go1.17
 
 if exist make.bat goto ok
 echo Must run make.bat from Go src directory.
